@@ -2,11 +2,12 @@ import React from 'react';
 import M from 'materialize-css';
 import { PERIODS, DESC_PERIODS } from './helpers/periods';
 import { Header } from './components/Header';
-import { MounthSelect } from './components/MounthSelect';
+import { MonthSelect } from './components/MonthSelect';
 import './App.css';
+import 'materialize-css/dist/css/materialize.min.css';
 import { Summary } from './components/Summary';
 import { Filter } from './components/Filter';
-import { Modal } from './components/Modal';
+
 export default function App() {
   const [transactions, setTransactions] = React.useState([]);
   const [currentPeriod, setCurrentPeriod] = React.useState(PERIODS[0]);
@@ -26,15 +27,14 @@ export default function App() {
     <div>
       <Header />
       <div className="container">
-        <MounthSelect
+        <Summary />
+        <Filter />
+        <MonthSelect
           currentMonth={currentPeriod}
           months={PERIODS}
           descMonths={DESC_PERIODS}
           onChange={handlePeriodChange}
         />
-        <Summary />
-
-        <Filter />
       </div>
     </div>
   );
